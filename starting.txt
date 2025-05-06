@@ -1,0 +1,6 @@
+Backend:
+Start venv: source venv/bin/activate
+Run server: python3 server.py
+
+Frontend:
+Run app: npm start
