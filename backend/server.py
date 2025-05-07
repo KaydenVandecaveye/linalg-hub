@@ -92,14 +92,23 @@ def mat_mult():
     B = data.get('matrix2')
 
     if not A or not B:
-        return jsonify({'error':'Missing matrix input'})
+        return jsonify({
+            'error':'Missing matrix input',
+            'steps': []
+            })
 
     m,n = len(A), len(A[0])
     p,z = len(B), len(B[0])
     if n != p:
-        return jsonify({'error':'Invalid matrix dimensions'})
+        return jsonify({
+            'error':'Invalid matrix dimensions',
+            'steps': []
+            })
     result = [[0 for _ in range(z)] for _ in range(m)]
-    steps = [[[] for _ in range(z)] for _ in range(m)]
+
+    steps = [
+        "AB = C, where \\( c_{ij} = \\sum_{k=1}^{n} a_{ik} \\cdot b_{kj} \\)",
+    ]
 
     for i in range(m):
         for j in range(z):
@@ -110,15 +119,16 @@ def mat_mult():
                 terms.append(f"{A[i][k]} * {B[k][j]} = {prod}")
                 total += prod
             result[i][j] = total
-            steps[i][j] = {
-                "calculation": " + ".join([f"{A[i][k]}*{B[k][j]}" for k in range(n)]),
-                "steps": terms,
-                "result": total
-            }
+    steps.append(f"\\({matrix_to_latex(A)}{matrix_to_latex(B)} = {matrix_to_latex(result)}\\)")
     return jsonify({
         "result": result, 
         "steps": steps
     })
+
+def matrix_to_latex(matrix):
+    rows = [" & ".join(map(str, row)) for row in matrix]
+    return "\\begin{bmatrix}" + " \\\\ ".join(rows) + "\\end{bmatrix}"
+    
 
 if __name__ == '__main__':
     app.run(port=8000, debug=True)

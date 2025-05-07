@@ -19,6 +19,7 @@ function MatrixInput({matrix, setMatrix, row = 2, col = 2}) {
                                 type='number'
                                 value={cell}
                                 onChange={(e) => handleInputChange(e, rowIdx, colIdx)}
+                                placeholder='0'
                                 />
                             </td>
                         ))}

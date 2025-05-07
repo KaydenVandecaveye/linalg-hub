@@ -1,6 +1,8 @@
 import { MathJaxContext, MathJax } from 'better-react-mathjax';
 
 function GetMathSteps({ steps }) {
+    if (!Array.isArray(steps)) return null;
+
     const latexConfig = {
         loader: { load: ["input/asciimath", "output/chtml"] },
       };
