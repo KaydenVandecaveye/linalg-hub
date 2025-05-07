@@ -53,6 +53,7 @@ def dotprod():
             sqrs = [x**2 for x in vec1]
             total = sum(sqrs)
             steps = [
+                f"\\(\\vec{{v}} \\cdot \\vec{{v}} = \\sum_{{i=1}}^{{n}} v_i^2 \\)",
                 f"\\(\\vec{{v}} \\cdot \\vec{{v}} = {{{' + '.join(f'{x}^2' for x in vec1)}}}\\)",
                 f"\\(\\vec{{v}} \\cdot \\vec{{v}} = {{{' + '.join(str(x) for x in sqrs)}}}\\)",
                 f"\\(\\vec{{v}} \\cdot \\vec{{v}} = {round(total, 4)}\\)"
@@ -71,7 +72,8 @@ def dotprod():
             sqrs = [x1 * x2 for x1,x2 in zip(vec1,vec2)]
             total = sum(sqrs)
             steps = [
-                f"\\(\\vec{{v_1}} \\cdot \\vec{{v_2}} = {{{' + '.join(f'{x1} * {x2}' for x1,x2 in zip(vec1,vec2))}}}\\)",
+                f"\\(\\vec{{v_1}} \\cdot \\vec{{v_1}} = \\sum_{{i=1}}^{{n}} v_{{1i}} * v_{{2i}} \\)",
+                f"\\(\\vec{{v_1}} \\cdot \\vec{{v_2}} = {{{' + '.join(f'({x1} * {x2})' for x1,x2 in zip(vec1,vec2))}}}\\)",
                 f"\\(\\vec{{v_1}} \\cdot \\vec{{v_2}} = {{{' + '.join(str(x) for x in sqrs)}}}\\)",
                 f"\\(\\vec{{v_1}} \\cdot \\vec{{v_2}} = {round(total, 4)}\\)"
             ]
@@ -82,7 +84,41 @@ def dotprod():
         'status': "valid",
         'steps': steps
     })
-    
+
+@app.route('/api/matmult', methods=['POST'])
+def mat_mult():
+    data = request.get_json()
+    A = data.get('matrix1')
+    B = data.get('matrix2')
+
+    if not A or not B:
+        return jsonify({'error':'Missing matrix input'})
+
+    m,n = len(A), len(A[0])
+    p,z = len(B), len(B[0])
+    if n != p:
+        return jsonify({'error':'Invalid matrix dimensions'})
+    result = [[0 for _ in range(z)] for _ in range(m)]
+    steps = [[[] for _ in range(z)] for _ in range(m)]
+
+    for i in range(m):
+        for j in range(z):
+            terms = []
+            total = 0
+            for k in range(n):
+                prod = A[i][k] * B[k][j]
+                terms.append(f"{A[i][k]} * {B[k][j]} = {prod}")
+                total += prod
+            result[i][j] = total
+            steps[i][j] = {
+                "calculation": " + ".join([f"{A[i][k]}*{B[k][j]}" for k in range(n)]),
+                "steps": terms,
+                "result": total
+            }
+    return jsonify({
+        "result": result, 
+        "steps": steps
+    })
 
 if __name__ == '__main__':
     app.run(port=8000, debug=True)

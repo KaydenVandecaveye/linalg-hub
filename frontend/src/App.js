@@ -3,6 +3,7 @@ import axios from "axios";
 import './App.css';
 import Norm from './pages/Norm';
 import DotProd from './pages/DotProd';
+import MatMult from "./pages/MatMult";
 
 function HomePage() {
   const navigate = useNavigate();
@@ -11,7 +12,8 @@ function HomePage() {
     <div>
       <h1>LinAlg Hub</h1>
       <button onClick={() => navigate("/Norm")}>Norm</button>
-      <button onClick={() => navigate("/DotProd")}>DotProd</button>
+      <button onClick={() => navigate("/DotProd")}>DotProduct</button>
+      <button onClick={() => navigate("/MatMult")}>MatrixMultiplication</button>
     </div>
   )
 }
@@ -23,6 +25,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/Norm" element={<Norm />} />
         <Route path="/DotProd" element={<DotProd />} />
+        <Route path="/MatMult" element={<MatMult />} />
       </Routes>
     </Router>
   );

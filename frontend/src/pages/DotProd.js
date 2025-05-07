@@ -29,23 +29,23 @@ function DotProd() {
             <h1>LinAlgHub - DotProduct</h1>
 
             <form onSubmit={handleSubmission}>
-            <label>Enter vector 1: </label>
-            <input
-                type="text"
-                value={vec1}
-                onChange={e => setVec1(e.target.value)}
-                placeholder="1, 2, 3..."
-            />
-            <label>Enter vector 2: </label>
-            <input
-                type="text"
-                value={vec2}
-                onChange={e => setVec2(e.target.value)}
-                placeholder="1, 2, 3..."
-            />
-            <button type="submit">Submit</button>
+                <label>Enter vector 1: </label>
+                <input
+                    type="text"
+                    value={vec1}
+                    onChange={e => setVec1(e.target.value)}
+                    placeholder="1, 2, 3..."
+                />
+                <label>Enter vector 2: </label>
+                <input
+                    type="text"
+                    value={vec2}
+                    onChange={e => setVec2(e.target.value)}
+                    placeholder="1, 2, 3..."
+                />
+                <button type="submit">Submit</button>
             </form>
-
+            
             {response && (
                 <div>
                     <p>Received: {JSON.stringify(response.received)}</p>
