@@ -54,26 +54,8 @@ function MatMult() {
         <h1> LinAlgHub - MatrixMultiplication </h1>
         <button onClick={() => navigate(-1)}>Back</button>
         
-        <p>Matrix A</p>
-        <MatrixInput matrix={matrix1} setMatrix={setMatrix1}/>
-        <label>Matrix A dimesions:</label>
-        <select defaultValue={2} onChange={(e) => updateMatrixSize(true, parseInt(e.target.value), matrix1[0].length)}>
-            {[1, 2, 3, 4].map(n => <option key = {n} value={n}>{n}</option>)}
-        </select>
-        <select defaultValue={2} onChange={(e) => updateMatrixSize(true, matrix1.length, parseInt(e.target.value))}>
-            {[1, 2, 3, 4].map(n => <option key={n} value={n}>{n}</option>)}
-        </select>
-        
-
-        <p>Matrix B</p>
-        <MatrixInput matrix={matrix2} setMatrix={setMatrix2} />
-        <label>Matrix B dimesions:</label>
-        <select defaultValue={2} onChange={(e) => updateMatrixSize(false, parseInt(e.target.value), matrix2[0].length)}>
-            {[1, 2, 3, 4].map(n => <option key = {n} value={n}>{n}</option>)}
-        </select>
-        <select defaultValue={2} onChange={(e) => updateMatrixSize(false, matrix2.length, parseInt(e.target.value))}>
-            {[1, 2, 3, 4].map(n => <option key={n} value={n}>{n}</option>)}
-        </select>
+        <MatrixInput title={"Matrix A"} matrix={matrix1} setMatrix={setMatrix1}/>
+        <MatrixInput title={"Matrix B"} matrix={matrix2} setMatrix={setMatrix2} />
 
         <button onClick={handleSubmission}>Multiply Matrices</button>
 

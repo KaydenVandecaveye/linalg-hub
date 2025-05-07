@@ -40,8 +40,6 @@ function Norm() {
 
       {response && (
         <div>
-          <p>Received: {JSON.stringify(response.received)} </p>
-          <p>Steps: </p>
           <GetMathSteps steps = {response.steps} />
         </div>
       )}

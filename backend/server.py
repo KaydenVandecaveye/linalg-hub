@@ -18,10 +18,10 @@ def norm():
 
     #steps
     steps = [
-        f"\\(||\\vec{{v}}|| = \\sqrt{{{' + '.join(f'{x}^2' for x in vector)}}}\\)",
-        f"\\(||\\vec{{v}}|| = \\sqrt{{{' + '.join(str(x) for x in sqrs)}}}\\)",
-        f"\\(||\\vec{{v}}|| = \\sqrt{{{sum_of_sqrs}}}\\)",
-        f"\\(||\\vec{{v}}|| = {round(norm, 4)}\\)"
+        f"\\[||\\vec{{v}}|| = \\sqrt{{{' + '.join(f'{x}^2' for x in vector)}}}\\]",
+        f"\\[||\\vec{{v}}|| = \\sqrt{{{' + '.join(str(x) for x in sqrs)}}}\\]",
+        f"\\[||\\vec{{v}}|| = \\sqrt{{{sum_of_sqrs}}}\\]",
+        f"\\[||\\vec{{v}}|| = {round(norm, 4)}\\]"
     ]
 
     return jsonify({
@@ -53,10 +53,10 @@ def dotprod():
             sqrs = [x**2 for x in vec1]
             total = sum(sqrs)
             steps = [
-                f"\\(\\vec{{v}} \\cdot \\vec{{v}} = \\sum_{{i=1}}^{{n}} v_i^2 \\)",
-                f"\\(\\vec{{v}} \\cdot \\vec{{v}} = {{{' + '.join(f'{x}^2' for x in vec1)}}}\\)",
-                f"\\(\\vec{{v}} \\cdot \\vec{{v}} = {{{' + '.join(str(x) for x in sqrs)}}}\\)",
-                f"\\(\\vec{{v}} \\cdot \\vec{{v}} = {round(total, 4)}\\)"
+                f"\\[\\vec{{v}} \\cdot \\vec{{v}} = \\sum_{{i=1}}^{{n}} v_i^2 \\]",
+                f"\\[\\vec{{v}} \\cdot \\vec{{v}} = {{{' + '.join(f'{x}^2' for x in vec1)}}}\\]",
+                f"\\[\\vec{{v}} \\cdot \\vec{{v}} = {{{' + '.join(str(x) for x in sqrs)}}}\\]",
+                f"\\[\\vec{{v}} \\cdot \\vec{{v}} = {round(total, 4)}\\]"
             ]
         # assume 2 vectors, dotprod with each other
         case _:
@@ -72,10 +72,10 @@ def dotprod():
             sqrs = [x1 * x2 for x1,x2 in zip(vec1,vec2)]
             total = sum(sqrs)
             steps = [
-                f"\\(\\vec{{v_1}} \\cdot \\vec{{v_1}} = \\sum_{{i=1}}^{{n}} v_{{1i}} * v_{{2i}} \\)",
-                f"\\(\\vec{{v_1}} \\cdot \\vec{{v_2}} = {{{' + '.join(f'({x1} * {x2})' for x1,x2 in zip(vec1,vec2))}}}\\)",
-                f"\\(\\vec{{v_1}} \\cdot \\vec{{v_2}} = {{{' + '.join(str(x) for x in sqrs)}}}\\)",
-                f"\\(\\vec{{v_1}} \\cdot \\vec{{v_2}} = {round(total, 4)}\\)"
+                f"\\[\\vec{{v_1}} \\cdot \\vec{{v_1}} = \\sum_{{i=1}}^{{n}} v_{{1i}} * v_{{2i}} \\]",
+                f"\\[\\vec{{v_1}} \\cdot \\vec{{v_2}} = {{{' + '.join(f'({x1} * {x2})' for x1,x2 in zip(vec1,vec2))}}}\\]",
+                f"\\[\\vec{{v_1}} \\cdot \\vec{{v_2}} = {{{' + '.join(str(x) for x in sqrs)}}}\\]",
+                f"\\[\\vec{{v_1}} \\cdot \\vec{{v_2}} = {round(total, 4)}\\]"
             ]
 
     return jsonify({
@@ -108,6 +108,7 @@ def mat_mult():
 
     steps = [
         "\\[AB = C \\text{, where } C_{ij} = \\sum_{k=1}^{n} A_{ik} \\cdot B_{kj} \\]",
+        f"\\[ A \\in \\mathbb{{R}}^{{{m}\\times{n}}},\\ B \\in \\mathbb{{R}}^{{{n}\\times{z}}} \\Rightarrow C \\in \\mathbb{{R}}^{{{m}\\times{z}}} \\]",
     ]
 
     for i in range(m):

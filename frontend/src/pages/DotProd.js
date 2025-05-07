@@ -48,10 +48,7 @@ function DotProd() {
             
             {response && (
                 <div>
-                    <p>Received: {JSON.stringify(response.received)}</p>
-                     <p>Steps: </p>
                     <GetMathSteps steps = {response.steps} />
-                    <p>Total: {response.total} </p>
                 </div>
             )}
         </div>
