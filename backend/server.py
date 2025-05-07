@@ -107,19 +107,20 @@ def mat_mult():
     result = [[0 for _ in range(z)] for _ in range(m)]
 
     steps = [
-        "AB = C, where \\( c_{ij} = \\sum_{k=1}^{n} a_{ik} \\cdot b_{kj} \\)",
+        "\\[AB = C \\text{, where } C_{ij} = \\sum_{k=1}^{n} A_{ik} \\cdot B_{kj} \\]",
     ]
 
     for i in range(m):
         for j in range(z):
-            terms = []
+            step = []
             total = 0
             for k in range(n):
                 prod = A[i][k] * B[k][j]
-                terms.append(f"{A[i][k]} * {B[k][j]} = {prod}")
+                step.append(f"({A[i][k]} * {B[k][j]})")
                 total += prod
+            steps.append(f"\\[ C_{{{i+1}{j+1}}} = { ' + '.join(step) } = {total }\\]")
             result[i][j] = total
-    steps.append(f"\\({matrix_to_latex(A)}{matrix_to_latex(B)} = {matrix_to_latex(result)}\\)")
+    steps.append(f"\\[{matrix_to_latex(A)}{matrix_to_latex(B)} = {matrix_to_latex(result)}\\]")
     return jsonify({
         "result": result, 
         "steps": steps

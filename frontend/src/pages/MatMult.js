@@ -6,6 +6,8 @@ import { MathJax, MathJaxContext } from "better-react-mathjax";
 
 function MatMult() {
     const navigate = useNavigate();
+
+    // default to 2x2 matrices
     const [matrix1, setMatrix1] = useState([["", ""], ["", ""]]);
     const [matrix2, setMatrix2] = useState([["", ""], ["", ""]]);
     const [response, setResponse] = useState(null);
@@ -28,6 +30,19 @@ function MatMult() {
         console.log("Steps", data.steps);
     }
 
+    const updateMatrixSize = (matrix1, rows, cols) => {
+        if (matrix1) {
+            setMatrix1(Array.from({length:rows}, () => 
+            Array.from({length: cols}, () => "")
+            ));
+        }
+        else {
+            setMatrix2(Array.from({length:rows}, () => 
+                Array.from({length: cols}, () => "")
+                ));
+        };
+    }
+
 
     const latexConfig = {
         loader: { load: ["input/asciimath", "output/chtml"] },
@@ -41,9 +56,24 @@ function MatMult() {
         
         <p>Matrix A</p>
         <MatrixInput matrix={matrix1} setMatrix={setMatrix1}/>
+        <label>Matrix A dimesions:</label>
+        <select defaultValue={2} onChange={(e) => updateMatrixSize(true, parseInt(e.target.value), matrix1[0].length)}>
+            {[1, 2, 3, 4].map(n => <option key = {n} value={n}>{n}</option>)}
+        </select>
+        <select defaultValue={2} onChange={(e) => updateMatrixSize(true, matrix1.length, parseInt(e.target.value))}>
+            {[1, 2, 3, 4].map(n => <option key={n} value={n}>{n}</option>)}
+        </select>
+        
 
         <p>Matrix B</p>
         <MatrixInput matrix={matrix2} setMatrix={setMatrix2} />
+        <label>Matrix B dimesions:</label>
+        <select defaultValue={2} onChange={(e) => updateMatrixSize(false, parseInt(e.target.value), matrix2[0].length)}>
+            {[1, 2, 3, 4].map(n => <option key = {n} value={n}>{n}</option>)}
+        </select>
+        <select defaultValue={2} onChange={(e) => updateMatrixSize(false, matrix2.length, parseInt(e.target.value))}>
+            {[1, 2, 3, 4].map(n => <option key={n} value={n}>{n}</option>)}
+        </select>
 
         <button onClick={handleSubmission}>Multiply Matrices</button>
 
