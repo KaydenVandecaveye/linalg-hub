@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { parseVector } from "../utils/parseVector";
-import GetMathSteps from "./../utils/GetMathSteps";
+import { parseVector } from "../../utils/parseVector";
+import GetMathSteps from "../../utils/GetMathSteps";
 
 function DotProd() {
     const navigate = useNavigate();

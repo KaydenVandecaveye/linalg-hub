@@ -1,7 +1,7 @@
-import GetMathSteps from "./../utils/GetMathSteps";
+import GetMathSteps from "../../utils/GetMathSteps";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import MatrixInput from "../components/MatrixInput";
+import MatrixInput from "../../components/MatrixInput";
 import { MathJax, MathJaxContext } from "better-react-mathjax";
 
 function MatMult() {
@@ -56,8 +56,15 @@ function MatMult() {
         
         <MatrixInput title={"Matrix A"} matrix={matrix1} setMatrix={setMatrix1}/>
         <MatrixInput title={"Matrix B"} matrix={matrix2} setMatrix={setMatrix2} />
-
-        <button onClick={handleSubmission}>Multiply Matrices</button>
+        
+        <div 
+        style={{display: "flex",
+                justifyContent: "center",
+                margin: "2.5%"
+        }}
+        >
+            <button onClick={handleSubmission}>Multiply Matrices</button>
+        </div>
 
         {response && (
             <div>

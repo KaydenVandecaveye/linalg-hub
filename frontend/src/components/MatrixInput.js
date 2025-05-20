@@ -16,9 +16,20 @@ function MatrixInput({matrix, setMatrix, title, row = 2, col = 2}) {
         setMatrix(newMat);
     }
 
+    const genRandomMatrix = () => {
+        const rows = matrix.length;
+        const cols = matrix[0].length;
+        const mat = Array.from({length : rows}, () => 
+        Array.from({length : cols}, () => Math.floor(Math.random() * 10)));
+        setMatrix(mat);
+    }
+
     return (
         <div>
-        <h5>{title}</h5>
+        
+
+            <div style={styles.wrapper}>
+            <h5>{title}</h5>
             <div style={styles.matrixGrid}>
             <table>
                 <tbody>
@@ -40,13 +51,16 @@ function MatrixInput({matrix, setMatrix, title, row = 2, col = 2}) {
                 </tbody>
             </table>
             </div>
-        <label>Matrix dimesions:</label>
-        <select defaultValue={2} onChange={(e) => updateMatrixSize(parseInt(e.target.value), matrix[0].length)}>
-            {[1, 2, 3, 4].map(n => <option key = {n} value={n}>{n}</option>)}
-        </select>
-        <select defaultValue={2} onChange={(e) => updateMatrixSize(matrix.length, parseInt(e.target.value))}>
-            {[1, 2, 3, 4].map(n => <option key={n} value={n}>{n}</option>)}
-        </select>
+            </div>
+            <label style={styles.label}>Matrix dimensions:</label>
+        <div style={styles.controlGroup}>
+            <select defaultValue={2} onChange={(e) => updateMatrixSize(parseInt(e.target.value), matrix[0].length)}>
+                {[1, 2, 3, 4, 5, 6, 7, 8].map(n => <option key = {n} value={n}>{n}</option>)}
+            </select>
+            <select defaultValue={2} onChange={(e) => updateMatrixSize(matrix.length, parseInt(e.target.value))}>
+                {[1, 2, 3, 4, 5, 6, 7, 8].map(n => <option key={n} value={n}>{n}</option>)}
+            </select>
+        </div>
         </div>
     );
 };
@@ -54,11 +68,18 @@ function MatrixInput({matrix, setMatrix, title, row = 2, col = 2}) {
 export default MatrixInput;
 
 const styles = {
+    wrapper: {
+        display: "flex",
+        justifyContent: "center", 
+        alignItems: "center",    
+        flexDirection: "column",  
+        textAlign: "center", 
+        marginBottom: "0.5rem",
+    },
     matrixGrid: {
-      display: "grid",
-      gridTemplateColumns: "repeat(auto-fit, 3rem)",
-      gap: "0.5rem",
-      marginBottom: "1rem",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
     },
     matrixCell: {
       width: "3rem",
@@ -66,5 +87,16 @@ const styles = {
       fontSize: "1rem",
       padding: "0.2rem",
     },
+    controlGroup: {
+        display: "flex",
+        flexDirection: "column", 
+        justifyContent: "center",    
+        gap: "0.5rem",            
+        marginTop: "0.5rem",
+        flexDirection: "row"
+      },      
+      label: {
+        textAlign: "center",
+      },
   };
   

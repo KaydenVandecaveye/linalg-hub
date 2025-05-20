@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { MathJaxContext, MathJax } from 'better-react-mathjax';
 import { useNavigate } from "react-router-dom";
-import GetMathSteps from "./../utils/GetMathSteps";
-import { parseVector } from "../utils/parseVector";
+import GetMathSteps from "../../utils/GetMathSteps";
+import { parseVector } from "../../utils/parseVector";
 
 function Norm() {
   const navigate = useNavigate();

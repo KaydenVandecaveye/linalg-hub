@@ -107,8 +107,9 @@ def mat_mult():
     result = [[0 for _ in range(z)] for _ in range(m)]
 
     steps = [
+        "\\[ \\underline{\\text{Steps:}} \\]",
         "\\[AB = C \\text{, where } C_{ij} = \\sum_{k=1}^{n} A_{ik} \\cdot B_{kj} \\]",
-        f"\\[ A \\in \\mathbb{{R}}^{{{m}\\times{n}}},\\ B \\in \\mathbb{{R}}^{{{n}\\times{z}}} \\Rightarrow C \\in \\mathbb{{R}}^{{{m}\\times{z}}} \\]",
+        f"\\[ A \\in \\mathbb{{R}}^{{{m}\\times{n}}},\\ B \\in \\mathbb{{R}}^{{{n}\\times{z}}} \\Rightarrow C \\in \\mathbb{{R}}^{{{m}\\times{z}}} \\]"
     ]
 
     for i in range(m):
