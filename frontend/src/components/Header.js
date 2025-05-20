@@ -1,35 +1,32 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Header = () => {
     const [menuOpen, setMenuOpen] = useState(false);
-    const navigate = useNavigate();
+    const linkClass =
+    "hover:underline hover:decoration-6 hover:underline-offset-8 pb-[2px] transition-all focus:outline-none focus:no-underline";
   
     return (
-      <header className="flex items-center justify-between bg-gray-700
+      <header className="flex items-center justify-between bg-red-700
                          p-4 text-white shadow-md w-screen">
 
-        <button onClick={() => navigate("/")}
-                className='text-2xl font-bold hover:text-green-500 transition'>
-          LinAlgHub
-        </button>
+        <NavLink to="/" className={`text-2xl font-bold ${linkClass}`}>
+          LearnLinear
+        </NavLink>
   
         <nav className="hidden md:flex space-x-6 text-lg">
 
-          <button onClick={() => navigate("/Learn")}
-            className='hover:text-green-500 transition'>
+          <NavLink to="/Learn" className={linkClass}>
             Learn
-          </button>
+          </NavLink>
 
-          <button onClick={() => navigate("/Practice")}
-            className='hover:text-green-500 transition'>
+          <NavLink to="/Practice" className={linkClass}>
             Practice
-          </button>
+          </NavLink>
 
-          <button onClick={() => navigate("/Calculate")}
-            className='hover:text-green-500 transition'>
+          <NavLink to="/Calculate" className={linkClass}>
             Calculate
-          </button>
+          </NavLink>
 
         </nav>
   

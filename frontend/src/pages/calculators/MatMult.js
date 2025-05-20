@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import MatrixInput from "../../components/MatrixInput";
 import { MathJax, MathJaxContext } from "better-react-mathjax";
+import Header from "../../components/Header";
 
 function MatMult() {
     const navigate = useNavigate();
@@ -51,6 +52,7 @@ function MatMult() {
 
     return (
     <div>
+        <Header />
         <h1> LinAlgHub - MatrixMultiplication </h1>
         <button onClick={() => navigate(-1)}>Back</button>
         

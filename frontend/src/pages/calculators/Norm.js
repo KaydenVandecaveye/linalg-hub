@@ -3,6 +3,7 @@ import { MathJaxContext, MathJax } from 'better-react-mathjax';
 import { useNavigate } from "react-router-dom";
 import GetMathSteps from "../../utils/GetMathSteps";
 import { parseVector } from "../../utils/parseVector";
+import Header from "../../components/Header";
 
 function Norm() {
   const navigate = useNavigate();
@@ -26,6 +27,7 @@ function Norm() {
   
   return (
     <div>
+      <Header />
       <button onClick={() => navigate(-1)}>Back</button>
       <h1>LinAlg Hub - Norm</h1>
       <form onSubmit={handleSubmission}>

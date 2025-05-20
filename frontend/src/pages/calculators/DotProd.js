@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { parseVector } from "../../utils/parseVector";
 import GetMathSteps from "../../utils/GetMathSteps";
+import Header from "../../components/Header";
 
 function DotProd() {
     const navigate = useNavigate();
@@ -13,7 +14,7 @@ function DotProd() {
         e.preventDefault()
         const vectors = [parseVector(vec1), parseVector(vec2)]
 
-        const response = await fetch('api/dotprod', {
+        const response = await fetch('/api/dotprod', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({vectors})
@@ -25,6 +26,7 @@ function DotProd() {
 
     return(
         <div>
+            <Header />
             <button onClick={() => navigate(-1)}>Back</button>
             <h1>LinAlgHub - DotProduct</h1>
 

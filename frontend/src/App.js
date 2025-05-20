@@ -20,10 +20,10 @@ function HomePage() {
 
   return (
     <div className="min-h-screen flex flex-col items-center
-                    justify-start bg-gray-100 ">
+                    justify-start">
       <Header />
-      
-      <h1 className="text-4xl font-bold mt-8 mb-4">
+
+      <h1 className="text-4xl font-bold mt-8 mb-4 text-gray-500">
         LearnLinear
       </h1>
 
@@ -35,7 +35,7 @@ function HomePage() {
         />
       </div>
 
-      <p className="text-sm italic">
+      <p className="text-sm italic text-gray-500">
         *Animation credit goes to 3Blue1Brown*
       </p>
 

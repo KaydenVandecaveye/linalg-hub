@@ -72,7 +72,7 @@ def dotprod():
             sqrs = [x1 * x2 for x1,x2 in zip(vec1,vec2)]
             total = sum(sqrs)
             steps = [
-                f"\\[\\vec{{v_1}} \\cdot \\vec{{v_1}} = \\sum_{{i=1}}^{{n}} v_{{1i}} * v_{{2i}} \\]",
+                f"\\[\\vec{{v_1}} \\cdot \\vec{{v_2}} = \\sum_{{i=1}}^{{n}} v_{{1i}} * v_{{2i}} \\]",
                 f"\\[\\vec{{v_1}} \\cdot \\vec{{v_2}} = {{{' + '.join(f'({x1} * {x2})' for x1,x2 in zip(vec1,vec2))}}}\\]",
                 f"\\[\\vec{{v_1}} \\cdot \\vec{{v_2}} = {{{' + '.join(str(x) for x in sqrs)}}}\\]",
                 f"\\[\\vec{{v_1}} \\cdot \\vec{{v_2}} = {round(total, 4)}\\]"
