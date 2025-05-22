@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import GetMathSteps from "../../utils/GetMathSteps";
 import { parseVector } from "../../utils/parseVector";
 import Header from "../../components/Header";
+import { ArrowLeft } from "lucide-react";
 
 function Norm() {
   const navigate = useNavigate();
@@ -26,25 +27,52 @@ function Norm() {
 
   
   return (
-    <div>
+    <div className="min-h-screen bg-gray-50">
+    
       <Header />
-      <button onClick={() => navigate(-1)}>Back</button>
-      <h1>LinAlg Hub - Norm</h1>
-      <form onSubmit={handleSubmission}>
-        <label>Enter a vector: </label>
-        <input
-          type="text"
-          value={input}
-          onChange={e => setInput(e.target.value)}
-          placeholder="1, 2, 3..."
-        />
-      </form>
+
+      <div className="p-6 flex-col items-center text-center">
+        <button onClick={() => navigate(-1)}
+          className="flex items-center"
+        >
+          <ArrowLeft/>
+        </button>
+
+        <h1 className="text-3xl font-bold text-center mb-2">
+            Norm Calculator
+        </h1>
+        <p className="text-center mb-8">
+            Enter a vector to compute it's norm with steps!
+        </p>
+
+        <form onSubmit={handleSubmission}
+          className="flex flex-col items-center"
+        >
+          <label className="block text-sm font-semibold mb-1">
+            Enter a vector: 
+          </label>
+          <input
+            type="text"
+            value={input}
+            onChange={e => setInput(e.target.value)}
+            placeholder="1, 2, 3..."
+            className="vector-input"
+          />
+
+          <button type="submit"
+            className="submit-button"
+          >
+            Submit
+          </button>
+
+        </form>
 
       {response && (
         <div>
           <GetMathSteps steps = {response.steps} />
         </div>
       )}
+      </div>
     </div>
   );
 }

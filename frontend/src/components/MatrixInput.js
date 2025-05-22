@@ -25,13 +25,13 @@ function MatrixInput({matrix, setMatrix, title, row = 2, col = 2}) {
     }
 
     return (
-        <div>
-        
-
-            <div style={styles.wrapper}>
-            <h5>{title}</h5>
-            <div style={styles.matrixGrid}>
-            <table>
+        <div className="flex flex-col items-center justify-center mb-4">
+            
+            <h5 className='text-lg font-semibold mb-2'>
+                {title}
+            </h5>
+            <div className='overflow-auto'>
+            <table className='border-separate border-spacing-1'>
                 <tbody>
                     {matrix.map((row, rowIdx) => (
                         <tr key = {rowIdx}>
@@ -43,6 +43,7 @@ function MatrixInput({matrix, setMatrix, title, row = 2, col = 2}) {
                                     value={cell}
                                     onChange={(e) => handleInputChange(e, rowIdx, colIdx)}
                                     placeholder='0'
+                                    className='w-14 h-10 text-center text-sm border rounded-lg focus:ring-red-200'
                                     />
                                 </td>
                             ))}
@@ -51,8 +52,9 @@ function MatrixInput({matrix, setMatrix, title, row = 2, col = 2}) {
                 </tbody>
             </table>
             </div>
-            </div>
-            <label style={styles.label}>Matrix dimensions:</label>
+            <label className='text-sm font-medium mt-2'>
+                Matrix dimensions:
+            </label>
         <div style={styles.controlGroup}>
             <select defaultValue={2} onChange={(e) => updateMatrixSize(parseInt(e.target.value), matrix[0].length)}>
                 {[1, 2, 3, 4, 5, 6, 7, 8].map(n => <option key = {n} value={n}>{n}</option>)}

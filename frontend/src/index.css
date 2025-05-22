@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.submit-button {
+    @apply w-96 bg-red-700 border rounded-lg text-white font-semibold
+    py-2 transition duration-200 mt-2;
+}
+
+.vector-input {
+    @apply w-96 px-4 py-2 border rounded-lg focus:outline-none
+    focus:ring-2 focus:ring-red-200 mb-4
+}

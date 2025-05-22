@@ -22,12 +22,16 @@ function HomePage() {
     <div className="min-h-screen flex flex-col items-center
                     justify-start">
       <Header />
+      <div className="text-center mt-8">
+        <h1 className="text-4xl font-bold mt-8 mb-4 text-gray-800">
+          LearnLinear
+        </h1>
+        <p className="text-lg mt-2 text-gray-600">
+         Learn Linear Algebra through clear, step-by-step solutions—perfect for students.
+        </p>
+      </div>
 
-      <h1 className="text-4xl font-bold mt-8 mb-4 text-gray-500">
-        LearnLinear
-      </h1>
-
-      <div className="w-full max-w-xl flex justify-center mb-2">
+      <div className="w-full max-w-2xl flex mt-6 mb-2 justify-center shadow">
         <img 
           src={gif} 
           alt="Animation"
@@ -37,6 +41,39 @@ function HomePage() {
 
       <p className="text-sm italic text-gray-500">
         *Animation credit goes to 3Blue1Brown*
+      </p>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 px-6 mt-8 mb-5">
+        <div className="shadow p-4 rounded-lg hover:shadow-lg transition">
+          <h3 className="text-xl font-semibold mb-2 text-center">
+            Learn 📘
+          </h3>
+          <p>
+            Interactive lessons that break down linear algebra concepts.
+          </p>
+        </div>
+
+        <div className="shadow p-4 rounded-lg hover:shadow-lg transition">
+          <h3 className="text-xl font-semibold mb-2 text-center">
+            Practice 🧠
+          </h3>
+          <p>
+            Test your understanding with guided practice problems and explanations.
+          </p>
+        </div>
+
+        <div className="shadow p-4 rounded-lg hover:shadow-lg transition">
+          <h3 className="text-xl font-semibold mb-2 text-center">
+            Calculate 🧮
+          </h3>
+          <p>
+            Step-by-step tools for dot products, matrix operations, and more.
+          </p>
+        </div>
+      </div>
+
+      <p className="mb-4 mt-8">
+        Built for students, by a student.
       </p>
 
     </div>

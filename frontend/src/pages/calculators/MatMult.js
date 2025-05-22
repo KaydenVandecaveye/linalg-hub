@@ -2,8 +2,8 @@ import GetMathSteps from "../../utils/GetMathSteps";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import MatrixInput from "../../components/MatrixInput";
-import { MathJax, MathJaxContext } from "better-react-mathjax";
 import Header from "../../components/Header";
+import { ArrowLeft } from "lucide-react";
 
 function MatMult() {
     const navigate = useNavigate();
@@ -51,29 +51,40 @@ function MatMult() {
     
 
     return (
-    <div>
+    <div className="min-h-screen bg-gray-50">
         <Header />
-        <h1> LinAlgHub - MatrixMultiplication </h1>
-        <button onClick={() => navigate(-1)}>Back</button>
+
+        <div className="p-6 flex-col items-center text-center">
+            <button onClick={() => navigate(-1)}
+                className="flex items-center"
+            >
+                <ArrowLeft/>
+            </button>
+
+            <h1 className="text-3xl font-bold text-center mb-2">
+                Matrix Multiplication Calculator
+            </h1>
+            <p className="text-center mb-8">
+                Enter two matrices to muliply them with steps!
+            </p>
+            
+            <MatrixInput title={"Matrix A"} matrix={matrix1} setMatrix={setMatrix1}/>
+            <MatrixInput title={"Matrix B"} matrix={matrix2} setMatrix={setMatrix2} />
+            
         
-        <MatrixInput title={"Matrix A"} matrix={matrix1} setMatrix={setMatrix1}/>
-        <MatrixInput title={"Matrix B"} matrix={matrix2} setMatrix={setMatrix2} />
-        
-        <div 
-        style={{display: "flex",
-                justifyContent: "center",
-                margin: "2.5%"
-        }}
-        >
-            <button onClick={handleSubmission}>Multiply Matrices</button>
+            <button onClick={handleSubmission}
+                className="submit-button"
+            >
+                Multiply Matrices
+            </button>
+            
+
+            {response && (
+                <div>
+                    <GetMathSteps steps = {response.steps} />
+                </div>
+            )}
         </div>
-
-        {response && (
-            <div>
-                <GetMathSteps steps = {response.steps} />
-            </div>
-        )}
-
     </div>
     )
 }
