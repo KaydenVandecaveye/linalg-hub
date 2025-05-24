@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from "react";
-import { MathJaxContext, MathJax } from 'better-react-mathjax';
 import { useNavigate } from "react-router-dom";
 import GetMathSteps from "../../utils/GetMathSteps";
 import { parseVector } from "../../utils/parseVector";
 import Header from "../../components/Header";
 import { ArrowLeft } from "lucide-react";
+import VectorInput from "../../components/VectorInput";
 
 function Norm() {
   const navigate = useNavigate();
-  const [input, setInput] = useState('');
+  const [vector, setVector] = useState('');
   const [response, setResponse] = useState(null);
 
   const handleSubmission = async (e) => {
     e.preventDefault();
-    const vector = parseVector(input);
+    const vec = parseVector(vector);
 
     const response = await fetch('/api/norm', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({vector})
+      body: JSON.stringify({vec})
     })
 
     const data = await response.json();
@@ -48,23 +48,12 @@ function Norm() {
         <form onSubmit={handleSubmission}
           className="flex flex-col items-center"
         >
-          <label className="block text-sm font-semibold mb-1">
-            Enter a vector: 
-          </label>
-          <input
-            type="text"
-            value={input}
-            onChange={e => setInput(e.target.value)}
-            placeholder="1, 2, 3..."
-            className="vector-input"
-          />
-
+          <VectorInput title={"Vector"} setVector={setVector} vector={vector}/>
           <button type="submit"
             className="submit-button"
           >
             Submit
           </button>
-
         </form>
 
       {response && (

@@ -4,6 +4,7 @@ import { parseVector } from "../../utils/parseVector";
 import GetMathSteps from "../../utils/GetMathSteps";
 import Header from "../../components/Header";
 import { ArrowLeft } from "lucide-react";
+import VectorInput from "../../components/VectorInput";
 
 function DotProd() {
     const navigate = useNavigate();
@@ -44,38 +45,13 @@ function DotProd() {
                 Enter two vectors to compute their dot product with steps!
             </p>
 
-            <form onSubmit={handleSubmission} 
-            className="flex flex-col items-center">
-                <label className="block text-sm font-semibold mb-1">
-                    Vector 1
-                </label>
-                <input
-                    type="text"
-                    value={vec1}
-                    onChange={e => setVec1(e.target.value)}
-                    placeholder="1, 2, 3..."
-                    className="vector-input"
-                />
-                <label className="block text-sm font-semibold mb-1">
-                    Vector 2
-                </label>
-                <input
-                    type="text"
-                    value={vec2}
-                    onChange={e => setVec2(e.target.value)}
-                    placeholder="1, 2, 3..."
-                    className="vector-input"
-                />
-
-                <button type="submit"
-                    className="submit-button"
-                >
-                    Submit
-                </button>
-
+            <form onSubmit={handleSubmission} className="flex flex-col items-center">
+                <VectorInput title={"Vector1"} vector={vec1} setVector={setVec1}/>
+                <VectorInput title={"Vector2"} vector={vec2} setVector={setVec2}/>
+                <button type="submit" className="submit-button">Submit</button>
             </form>
-
             
+
             
             {response && (
                 <div>

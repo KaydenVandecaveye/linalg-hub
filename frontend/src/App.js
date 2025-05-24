@@ -14,6 +14,13 @@ import Practice from "./pages/Practice";
 import Norm from './pages/calculators/Norm';
 import DotProd from './pages/calculators/DotProd';
 import MatMult from "./pages/calculators/MatMult";
+import Transpose from "./pages/calculators/Transpose";
+import Rank from "./pages/calculators/Rank";
+import Inverse from "./pages/calculators/Inverse";
+import GaussElim from "./pages/calculators/GaussElim";
+import GramSchmidt from "./pages/calculators/GramSchmidt";
+import Angle from "./pages/calculators/Angle";
+import CrossProd from "./pages/calculators/CrossProd";
 
 function HomePage() {
   const navigate = useNavigate();
@@ -84,13 +91,25 @@ function App() {
   return(
     <Router>
       <Routes>
+
+        {/* Main Tabs */}
         <Route path="/" element={<HomePage />} />
         <Route path="/Calculate" element={<Calculate/>}/>
         <Route path="/Learn" element={<Learn/>}/>
         <Route path="/Practice" element={<Practice/>}/>
+
+        {/* Calculators */}
         <Route path="/Calculate/Norm" element={<Norm />} />
         <Route path="/Calculate/DotProd" element={<DotProd />} />
         <Route path="/Calculate/MatMult" element={<MatMult />} />
+        <Route path="/Calculate/Transpose" element={<Transpose />} />
+        <Route path="/Calculate/Rank" element={<Rank/>} />
+        <Route path="/Calculate/Inverse" element={<Inverse />} />
+        <Route path="/Calculate/GaussElim" element={<GaussElim />} />
+        <Route path="/Calculate/GramSchmidt" element={<GramSchmidt />} />
+        <Route path="/Calculate/Angle" element={<Angle />} />
+        <Route path="/Calculate/CrossProd" element={<CrossProd />} />
+
       </Routes>
     </Router>
   );

@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 
-function MatrixInput({matrix, setMatrix, title, row = 2, col = 2}) {
+function MatrixInput({matrix, setMatrix, title, row = 2, col = 2, dimensions = "Matrix dimensions:"}) {
 
     const handleInputChange = (e, rowIdx, colIdx) => {
         const newMat = [...matrix];
@@ -53,7 +53,7 @@ function MatrixInput({matrix, setMatrix, title, row = 2, col = 2}) {
             </table>
             </div>
             <label className='text-sm font-medium mt-2'>
-                Matrix dimensions:
+                {dimensions}
             </label>
         <div style={styles.controlGroup}>
             <select defaultValue={2} onChange={(e) => updateMatrixSize(parseInt(e.target.value), matrix[0].length)}>
